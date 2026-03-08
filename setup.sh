@@ -19,7 +19,7 @@ print_success() {
 # Update system
 print_status "Updating system packages..."
 sudo apt update
-sudo apt install -y net-tools
+sudo apt install -y net-tools wget curl
 print_success "System packages updated"
 
 # Setup locale for ROS2
@@ -38,7 +38,7 @@ print_success "Universe repository added"
 
 # Install ROS2
 print_status "Installing ROS2 Humble..."
-sudo apt update && sudo apt install -y curl
+sudo apt update
 export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F "tag_name" | awk -F\" '{print $4}')
 curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo ${UBUNTU_CODENAME:-${VERSION_CODENAME}})_all.deb"
 sudo dpkg -i /tmp/ros2-apt-source.deb
@@ -52,14 +52,20 @@ print_success "ROS2 Humble installed"
 export ROS_DISTRO=humble
 source /opt/ros/$ROS_DISTRO/setup.bash
 
-# Install MoveIt2
-print_status "Installing MoveIt2..."
-sudo apt install ros-humble-moveit
-print_success "MoveIt2 installed"
+# Initialize rosdep
+print_status "Initializing rosdep..."
+sudo rosdep init || true  # Don't fail if already initialized
+rosdep update
+print_success "rosdep initialized"
 
 # Install MoveIt2
+print_status "Installing MoveIt2..."
+sudo apt install -y ros-humble-moveit
+print_success "MoveIt2 installed"
+
+# Install MoveIt2 Panda Arm Resources
 print_status "Installing MoveIt2 Panda Arm Resources..."
-sudo apt install ros-humble-moveit-resources-panda-moveit-config
+sudo apt install -y ros-humble-moveit-resources-panda-moveit-config
 print_success "MoveIt2 Panda Arm resources installed"
 
 # Install VS Code
@@ -74,7 +80,34 @@ print_success "VS Code installed"
 # Clean up VS Code deb file
 rm /tmp/vscode.deb
 
+# Setup environment variables in bashrc
+print_status "Configuring environment variables..."
+cat >> ~/.bashrc << 'EOF'
+
+# ROS2 Setup
+export ROS_DISTRO=humble
+source /opt/ros/$ROS_DISTRO/setup.bash
+EOF
+
 print_success "Environment configured"
+
+# Clone Robotarm Repo
+print_status "Cloning Robotarm repository..."
+# Create a directory for the workspace
+mkdir -p ~/workspace/
+cd ~/workspace/
+
+# TODO: Replace with your actual GitHub repository URL
+# git clone https://github.com/yourusername/robotarm.git
+# For now, skip if repo doesn't exist
+if [ -n "${ROBOT_REPO_URL}" ]; then
+    git clone ${ROBOT_REPO_URL}
+    print_success "Robotarm repository cloned"
+else
+    echo "ROBOT_REPO_URL not set - skipping repository clone"
+    echo "To clone your repo later, run:"
+    echo "  cd ~/workspace/ && git clone https://github.com/yourusername/robotarm.git"
+fi
 
 echo ""
 echo -e "${GREEN}========================================${NC}"
@@ -82,20 +115,16 @@ echo -e "${GREEN}  Setup Complete!${NC}"
 echo -e "${GREEN}========================================${NC}"
 echo ""
 echo "Installed software:"
-echo "  - ROS2 Humble"
-echo "  - Move/It2 (from source)"
+echo "  - ROS2 Humble Desktop"
+echo "  - MoveIt2 (binary package)"
+echo "  - MoveIt2 Panda Resources"
 echo "  - VS Code"
-# echo "  - CycloneDDS"
 echo ""
-echo "Please run: source ~/.bashrc"
-echo "Or restart your terminal to apply changes."
+echo "Workspace location: ~/workspace/"
 echo ""
-echo "Workspace location: ~/ws_moveit2/"
+echo "Next steps:"
+echo "  1. Run: source ~/.bashrc"
+echo "  2. Set your robot repo URL and clone:"
+echo "     export ROBOT_REPO_URL=https://github.com/yourusername/robotarm.git"
+echo "     cd ~/workspace/ && git clone \$ROBOT_REPO_URL"
 echo ""
-
-
-
-
-
-
-
