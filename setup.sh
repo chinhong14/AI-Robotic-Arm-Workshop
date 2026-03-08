@@ -52,6 +52,16 @@ print_success "ROS2 Humble installed"
 export ROS_DISTRO=humble
 source /opt/ros/$ROS_DISTRO/setup.bash
 
+# Install MoveIt2
+print_status "Installing MoveIt2..."
+sudo apt install ros-humble-moveit
+print_success "MoveIt2 installed"
+
+# Install MoveIt2
+print_status "Installing MoveIt2 Panda Arm Resources..."
+sudo apt install ros-humble-moveit-resources-panda-moveit-config
+print_success "MoveIt2 Panda Arm resources installed"
+
 # Install VS Code
 print_status "Downloading VS Code for ARM64..."
 wget -O /tmp/vscode.deb "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-arm64"
@@ -73,7 +83,7 @@ echo -e "${GREEN}========================================${NC}"
 echo ""
 echo "Installed software:"
 echo "  - ROS2 Humble"
-# echo "  - MoveIt2 (from source)"
+echo "  - Move/It2 (from source)"
 echo "  - VS Code"
 # echo "  - CycloneDDS"
 echo ""
@@ -83,7 +93,9 @@ echo ""
 echo "Workspace location: ~/ws_moveit2/"
 echo ""
 
-sudo apt install ros-humble-moveit-resources-panda-moveit-config
-ros2 launch moveit_resources_panda_moveit_config demo.launch.py rviz_config:=panda_moveit_config_demo.rviz
 
-sudo apt install ros-humble-moveit
+
+
+
+
+
