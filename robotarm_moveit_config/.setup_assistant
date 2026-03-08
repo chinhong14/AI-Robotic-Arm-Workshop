@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: robotarm_description
+    relative_path: urdf/final_arm.urdf
+  srdf:
+    relative_path: config/cocoabot.srdf
+  package_settings:
+    author_name: chinhong
+    author_email: chinhonglee14@gmail.com
+    generated_timestamp: 1772974453
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
