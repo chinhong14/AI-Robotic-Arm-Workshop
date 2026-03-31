@@ -114,6 +114,7 @@ else
     echo "  cd ~/workspace/ && git clone https://github.com/chinhong14/AI-Robotic-Arm-Workshop.git"
 fi
 
+source ~/workspace/AI-Robotic-Arm-Workshop/install/setup.bash
 echo ""
 echo -e "${GREEN}========================================${NC}"
 echo -e "${GREEN}  Setup Complete!${NC}"
