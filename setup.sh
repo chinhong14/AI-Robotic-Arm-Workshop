@@ -57,8 +57,6 @@ print_success "ROS2 Humble installed"
 # Source ROS2
 export ROS_DISTRO=humble
 source /opt/ros/$ROS_DISTRO/setup.bash
-# Workspace overlay
-source ~/workspace/AI-Robotic-Arm-Workshop/install/setup.bash
 
 # # Initialize rosdep
 # print_status "Initializing rosdep..."
@@ -89,11 +87,6 @@ print_success "VS Code installed"
 # Clean up VS Code deb file
 rm /tmp/vscode.deb
 
-# Setup environment variables in bashrc
-print_status "Configuring environment variables..."
-cat >> ~/.bashrc << 'EOF'
-print_success "Environment configured"
-
 # Clone Robotarm Repo
 print_status "Cloning Robotarm repository..."
 # Create a directory for the workspace
@@ -117,6 +110,12 @@ else
 fi
 
 source ~/workspace/AI-Robotic-Arm-Workshop/install/setup.bash
+
+# Setup environment variables in bashrc
+print_status "Configuring environment variables..."
+cat >> ~/.bashrc << 'EOF'
+print_success "Environment configured"
+
 echo ""
 echo -e "${GREEN}========================================${NC}"
 echo -e "${GREEN}  Setup Complete!${NC}"
