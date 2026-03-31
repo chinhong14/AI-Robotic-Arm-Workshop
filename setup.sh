@@ -52,11 +52,11 @@ print_success "ROS2 Humble installed"
 export ROS_DISTRO=humble
 source /opt/ros/$ROS_DISTRO/setup.bash
 
-# Initialize rosdep
-print_status "Initializing rosdep..."
-sudo rosdep init || true  # Don't fail if already initialized
-rosdep update
-print_success "rosdep initialized"
+# # Initialize rosdep
+# print_status "Initializing rosdep..."
+# sudo rosdep init || true  # Don't fail if already initialized
+# rosdep update
+# print_success "rosdep initialized"
 
 # Install MoveIt2
 print_status "Installing MoveIt2..."
