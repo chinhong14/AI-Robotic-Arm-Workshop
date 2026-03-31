@@ -17,8 +17,7 @@ print_success() {
 }
 sudo apt purge -y libreoffice*
 sudo apt purge -y thunderbird
-sudo apt purge -y qt*
-sudo apt purge -y aisleriot gnome-mahjongg gnome-mines gnome-sudoku gnome-games*
+sudo apt purge -y aisleriot gnome-mahjongg gnome-mines gnome-sudoku
 sudo apt autoremove -y 
 sudo apt clean -y 
 
@@ -107,7 +106,7 @@ cd ~/workspace/
 
 # TODO: Replace with your actual GitHub repository URL
 sudo apt install -y git-all
-git clone git clone https://github.com/chinhong14/AI-Robotic-Arm-Workshop.git
+git clone https://github.com/chinhong14/AI-Robotic-Arm-Workshop.git
 cd ~/workspace/AI-Robotic-Arm-Workshop
 colcon build
 
