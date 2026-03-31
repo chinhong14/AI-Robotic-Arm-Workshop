@@ -57,6 +57,8 @@ print_success "ROS2 Humble installed"
 # Source ROS2
 export ROS_DISTRO=humble
 source /opt/ros/$ROS_DISTRO/setup.bash
+# Workspace overlay
+source ~/workspace/AI-Robotic-Arm-Workshop/install/setup.bash
 
 # # Initialize rosdep
 # print_status "Initializing rosdep..."
