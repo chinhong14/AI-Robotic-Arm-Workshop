@@ -46,6 +46,7 @@ sudo dpkg -i /tmp/ros2-apt-source.deb
 sudo apt update
 sudo apt upgrade -y
 sudo apt install -y ros-humble-desktop
+sudo apt install python3-colcon-common-extensions
 print_success "ROS2 Humble installed"
 
 # Source ROS2
