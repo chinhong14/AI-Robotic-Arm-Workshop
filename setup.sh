@@ -106,7 +106,7 @@ if [ -n "${ROBOT_REPO_URL}" ]; then
 else
     echo "ROBOT_REPO_URL not set - skipping repository clone"
     echo "To clone your repo later, run:"
-    echo "  cd ~/workspace/ && git clone https://github.com/yourusername/robotarm.git"
+    echo "  cd ~/workspace/ && git clone https://github.com/chinhong14/AI-Robotic-Arm-Workshop.git"
 fi
 
 echo ""
