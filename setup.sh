@@ -61,7 +61,8 @@ source /opt/ros/$ROS_DISTRO/setup.bash
 
 # Install MoveIt2
 print_status "Installing MoveIt2..."
-sudo apt install -y ros-humble-moveit
+sudo apt install -y ros-humble-moveit 
+sudo apt install ros-humble-ros2-control ros-humble-ros2-controllers
 print_success "MoveIt2 installed"
 
 # Install MoveIt2 Panda Arm Resources
