@@ -101,6 +101,9 @@ cd ~/workspace/
 # TODO: Replace with your actual GitHub repository URL
 sudo apt install git-all
 git clone git clone https://github.com/chinhong14/AI-Robotic-Arm-Workshop.git
+cd ~/workspace/AI-Robotic-Arm-Workshop
+colcon build
+
 # For now, skip if repo doesn't exist
 if [ -n "${ROBOT_REPO_URL}" ]; then
     git clone ${ROBOT_REPO_URL}
