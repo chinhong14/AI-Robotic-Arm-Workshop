@@ -106,7 +106,7 @@ mkdir -p ~/workspace/
 cd ~/workspace/
 
 # TODO: Replace with your actual GitHub repository URL
-sudo apt install git-all
+sudo apt install -y git-all
 git clone git clone https://github.com/chinhong14/AI-Robotic-Arm-Workshop.git
 cd ~/workspace/AI-Robotic-Arm-Workshop
 colcon build
