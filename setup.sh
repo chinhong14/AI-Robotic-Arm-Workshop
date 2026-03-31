@@ -90,12 +90,6 @@ rm /tmp/vscode.deb
 # Setup environment variables in bashrc
 print_status "Configuring environment variables..."
 cat >> ~/.bashrc << 'EOF'
-
-# ROS2 Setup
-export ROS_DISTRO=humble
-source /opt/ros/$ROS_DISTRO/setup.bash
-EOF
-
 print_success "Environment configured"
 
 # Clone Robotarm Repo
