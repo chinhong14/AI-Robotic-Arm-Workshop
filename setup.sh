@@ -15,12 +15,12 @@ print_status() {
 print_success() {
     echo -e "${GREEN}✓ $1${NC}"
 }
-sudo apt purge libreoffice*
-sudo apt purge thunderbird
-sudo apt purge qt*
-sudo apt purge aisleriot gnome-mahjongg gnome-mines gnome-sudoku gnome-games*
-sudo apt autoremove
-sudo apt clean
+sudo apt purge -y libreoffice*
+sudo apt purge -y thunderbird
+sudo apt purge -y qt*
+sudo apt purge -y aisleriot gnome-mahjongg gnome-mines gnome-sudoku gnome-games*
+sudo apt autoremove -y 
+sudo apt clean -y 
 
 # Update system
 print_status "Updating system packages..."
