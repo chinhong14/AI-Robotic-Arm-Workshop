@@ -15,16 +15,20 @@ print_status() {
 print_success() {
     echo -e "${GREEN}✓ $1${NC}"
 }
-sudo apt purge -y libreoffice*
-sudo apt purge -y thunderbird
-sudo apt purge -y aisleriot gnome-mahjongg gnome-mines gnome-sudoku
+
+# Remove unnecessary packages to save space
+print_status "Removing unnecessary packages..."
+sudo apt purge -y libreoffice* || true
+sudo apt purge -y thunderbird || true
+sudo apt purge -y aisleriot gnome-mahjongg gnome-mines gnome-sudoku || true
 sudo apt autoremove -y 
 sudo apt clean -y 
+print_success "Unnecessary packages removed"
 
 # Update system
 print_status "Updating system packages..."
 sudo apt update
-sudo apt install -y net-tools wget curl
+sudo apt install -y net-tools wget curl git-all
 print_success "System packages updated"
 
 # Setup locale for ROS2
@@ -51,23 +55,23 @@ sudo dpkg -i /tmp/ros2-apt-source.deb
 sudo apt update
 sudo apt upgrade -y
 sudo apt install -y ros-humble-desktop
-sudo apt install python3-colcon-common-extensions
+sudo apt install -y python3-colcon-common-extensions
 print_success "ROS2 Humble installed"
 
 # Source ROS2
 export ROS_DISTRO=humble
 source /opt/ros/$ROS_DISTRO/setup.bash
 
-# # Initialize rosdep
-# print_status "Initializing rosdep..."
-# sudo rosdep init || true  # Don't fail if already initialized
-# rosdep update
-# print_success "rosdep initialized"
+# Initialize rosdep
+print_status "Initializing rosdep..."
+sudo rosdep init || true  # Don't fail if already initialized
+rosdep update
+print_success "rosdep initialized"
 
 # Install MoveIt2
 print_status "Installing MoveIt2..."
 sudo apt install -y ros-humble-moveit 
-sudo apt install ros-humble-ros2-control ros-humble-ros2-controllers
+sudo apt install -y ros-humble-ros2-control ros-humble-ros2-controllers
 print_success "MoveIt2 installed"
 
 # Install MoveIt2 Panda Arm Resources
@@ -89,32 +93,35 @@ rm /tmp/vscode.deb
 
 # Clone Robotarm Repo
 print_status "Cloning Robotarm repository..."
-# Create a directory for the workspace
 mkdir -p ~/workspace/
 cd ~/workspace/
 
-# TODO: Replace with your actual GitHub repository URL
-sudo apt install -y git-all
+# Clone your repository
 git clone https://github.com/chinhong14/AI-Robotic-Arm-Workshop.git
+print_success "Robotarm repository cloned"
+
+# Build the workspace
+print_status "Building ROS2 workspace..."
 cd ~/workspace/AI-Robotic-Arm-Workshop
 colcon build
-
-# For now, skip if repo doesn't exist
-if [ -n "${ROBOT_REPO_URL}" ]; then
-    git clone ${ROBOT_REPO_URL}
-    print_success "Robotarm repository cloned"
-else
-    echo "ROBOT_REPO_URL not set - skipping repository clone"
-    echo "To clone your repo later, run:"
-    echo "  cd ~/workspace/ && git clone https://github.com/chinhong14/AI-Robotic-Arm-Workshop.git"
-fi
-
-source ~/workspace/AI-Robotic-Arm-Workshop/install/setup.bash
+print_success "Workspace built successfully"
 
 # Setup environment variables in bashrc
 print_status "Configuring environment variables..."
 cat >> ~/.bashrc << 'EOF'
+
+# ROS2 Setup
+export ROS_DISTRO=humble
+source /opt/ros/$ROS_DISTRO/setup.bash
+
+# Robot Workspace Setup
+source ~/workspace/AI-Robotic-Arm-Workshop/install/setup.bash
+EOF
+
 print_success "Environment configured"
+
+# Source the workspace for current session
+source ~/workspace/AI-Robotic-Arm-Workshop/install/setup.bash
 
 echo ""
 echo -e "${GREEN}========================================${NC}"
@@ -125,13 +132,14 @@ echo "Installed software:"
 echo "  - ROS2 Humble Desktop"
 echo "  - MoveIt2 (binary package)"
 echo "  - MoveIt2 Panda Resources"
+echo "  - ROS2 Control & Controllers"
 echo "  - VS Code"
+echo "  - AI Robotic Arm Workshop (built)"
 echo ""
-echo "Workspace location: ~/workspace/"
+echo "Workspace location: ~/workspace/AI-Robotic-Arm-Workshop"
 echo ""
 echo "Next steps:"
 echo "  1. Run: source ~/.bashrc"
-echo "  2. Set your robot repo URL and clone:"
-echo "     export ROBOT_REPO_URL=https://github.com/yourusername/robotarm.git"
-echo "     cd ~/workspace/ && git clone \$ROBOT_REPO_URL"
+echo "  2. Or restart your terminal"
+echo "  3. Test with: ros2 pkg list | grep robot"
 echo ""
