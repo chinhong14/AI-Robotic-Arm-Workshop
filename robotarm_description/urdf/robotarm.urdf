@@ -3,22 +3,22 @@
      Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
-  name="robotarm1">
+  name="robotarm">
   <link
     name="base_link">
     <inertial>
       <origin
-        xyz="0.0035407 -1.3568E-06 0.025751"
+        xyz="-0.0021617 3.2167E-06 0.025888"
         rpy="0 0 0" />
       <mass
-        value="0.4726" />
+        value="0.49164" />
       <inertia
-        ixx="0.00072672"
-        ixy="-5.0643E-10"
-        ixz="-1.7068E-05"
-        iyy="0.00071621"
-        iyz="2.091E-09"
-        izz="0.0011346" />
+        ixx="0.00072844"
+        ixy="-5.3735E-10"
+        ixz="1.7051E-05"
+        iyy="0.00071827"
+        iyz="-2.0927E-09"
+        izz="0.0011362" />
     </inertial>
     <visual>
       <origin
@@ -48,17 +48,17 @@
     name="link_1">
     <inertial>
       <origin
-        xyz="-4.9898E-05 0.00017226 0.022722"
+        xyz="4.934E-05 -0.00025879 0.022977"
         rpy="0 0 0" />
       <mass
-        value="0.25582" />
+        value="0.25792" />
       <inertia
-        ixx="0.00016823"
-        ixy="-3.9638E-10"
-        ixz="7.118E-09"
-        iyy="0.00018112"
-        iyz="1.3521E-07"
-        izz="0.00027506" />
+        ixx="0.00016866"
+        ixy="-1.8499E-10"
+        ixz="-7.6131E-09"
+        iyy="0.00018148"
+        iyz="1.65E-07"
+        izz="0.00027543" />
     </inertial>
     <visual>
       <origin
@@ -88,7 +88,7 @@
     name="joint_1"
     type="revolute">
     <origin
-      xyz="0 0 0.0617"
+      xyz="0 0 0.0632"
       rpy="0 0 0" />
     <parent
       link="base_link" />
@@ -106,17 +106,17 @@
     name="link_2">
     <inertial>
       <origin
-        xyz="-0.14839 -0.035723 -0.00051627"
+        xyz="-0.14821 -0.035621 -0.00028824"
         rpy="0 0 0" />
       <mass
-        value="0.2619" />
+        value="0.26072" />
       <inertia
-        ixx="0.00011734"
-        ixy="9.7901E-08"
-        ixz="-2.6563E-07"
-        iyy="0.00020884"
-        iyz="-8.1261E-10"
-        izz="0.00024931" />
+        ixx="0.00011686"
+        ixy="7.5116E-08"
+        ixz="-2.4827E-07"
+        iyy="0.00020757"
+        iyz="-1.5576E-09"
+        izz="0.00024756" />
     </inertial>
     <visual>
       <origin
@@ -146,7 +146,7 @@
     name="joint_2"
     type="revolute">
     <origin
-      xyz="-0.0002 0.03525 0.0605"
+      xyz="0.0002 0.03575 0.062"
       rpy="0 0 0" />
     <parent
       link="link_1" />
@@ -155,7 +155,7 @@
     <axis
       xyz="0 1 0" />
     <limit
-      lower="0.0"
+      lower="0"
       upper="3.142"
       effort="15.7"
       velocity="1" />
@@ -164,17 +164,17 @@
     name="link_3">
     <inertial>
       <origin
-        xyz="0.13843 -0.036185 0.042336"
+        xyz="0.14678 -0.035556 0.042761"
         rpy="0 0 0" />
       <mass
-        value="0.23372" />
+        value="0.24699" />
       <inertia
-        ixx="0.00012659"
-        ixy="7.9944E-08"
-        ixz="-2.7322E-05"
-        iyy="0.00021713"
-        iyz="-1.1736E-09"
-        izz="0.00024224" />
+        ixx="0.00012565"
+        ixy="3.4941E-08"
+        ixz="-2.5179E-05"
+        iyy="0.00020183"
+        iyz="-3.9334E-09"
+        izz="0.00022595" />
     </inertial>
     <visual>
       <origin
@@ -204,7 +204,7 @@
     name="joint_3"
     type="revolute">
     <origin
-      xyz="-0.26 -0.00065 -0.00065"
+      xyz="-0.26 5E-05 -0.00025"
       rpy="0 0 0" />
     <parent
       link="link_2" />
@@ -222,17 +222,17 @@
     name="link_4">
     <inertial>
       <origin
-        xyz="0.051218 -0.032837 -0.013758"
+        xyz="0.052835 -0.032615 -0.016642"
         rpy="0 0 0" />
       <mass
-        value="0.11094" />
+        value="0.13001" />
       <inertia
-        ixx="7.8087E-05"
-        ixy="-1.8418E-09"
-        ixz="2.4173E-07"
-        iyy="6.4212E-05"
-        iyz="-1.2842E-09"
-        izz="5.1318E-05" />
+        ixx="7.9678E-05"
+        ixy="-1.8435E-09"
+        ixz="2.4138E-07"
+        iyy="6.6322E-05"
+        iyz="-1.2533E-09"
+        izz="5.306E-05" />
     </inertial>
     <visual>
       <origin
@@ -262,7 +262,7 @@
     name="joint_4"
     type="revolute">
     <origin
-      xyz="0.2602 -0.00325 0.046162"
+      xyz="0.2602 -0.00245 0.046362"
       rpy="0 0 0" />
     <parent
       link="link_3" />
@@ -280,17 +280,17 @@
     name="link_5">
     <inertial>
       <origin
-        xyz="0.038487 -0.0023009 -0.0005271"
+        xyz="0.041261 0.0018859 5.2776E-06"
         rpy="0 0 0" />
       <mass
-        value="0.15528" />
+        value="0.14243" />
       <inertia
-        ixx="0.00015548"
-        ixy="-1.4207E-06"
-        ixz="-1.9441E-06"
-        iyy="8.0351E-05"
-        iyz="1.1046E-07"
-        izz="0.00014779" />
+        ixx="0.00011598"
+        ixy="2.5311E-07"
+        ixz="6.9458E-10"
+        iyy="5.3508E-05"
+        iyz="-3.2934E-09"
+        izz="0.00010923" />
     </inertial>
     <visual>
       <origin
@@ -303,7 +303,7 @@
       <material
         name="">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="0.89412 0.89412 0.89412 1" />
       </material>
     </visual>
     <collision>
@@ -320,7 +320,7 @@
     name="joint_5"
     type="revolute">
     <origin
-      xyz="0.0947 -0.03305 0.0003"
+      xyz="0.0947 -0.03245 -0.0003"
       rpy="0 0 0" />
     <parent
       link="link_4" />
@@ -334,8 +334,7 @@
       effort="8.34"
       velocity="1" />
   </joint>
-  
-  
+
   <!-- Minimal TCP link (zero mass, small collision box) -->
   <link name="tcp_link">
     <inertial>
@@ -358,22 +357,22 @@
     <axis xyz="0 0 1" />
     <limit lower="-1.57" upper="1.57" effort="8.33" velocity="1" />
   </joint>
-  
+
   <link
     name="link_6">
     <inertial>
       <origin
-        xyz="0.024202 0.0075855 0.02005"
+        xyz="0.02487 0.008464 0.02"
         rpy="0 0 0" />
       <mass
-        value="0.011608" />
+        value="0.012327" />
       <inertia
-        ixx="2.0209E-06"
-        ixy="4.1461E-07"
-        ixz="4.8679E-20"
-        iyy="8.1278E-06"
-        iyz="-1.6936E-20"
-        izz="7.0746E-06" />
+        ixx="2.0823E-06"
+        ixy="7.4626E-07"
+        ixz="5.5609E-12"
+        iyy="8.611E-06"
+        iyz="-6.6849E-13"
+        izz="7.4736E-06" />
     </inertial>
     <visual>
       <origin
@@ -403,7 +402,7 @@
     name="joint_6"
     type="prismatic">
     <origin
-      xyz="0.075 0 -0.02"
+      xyz="0.072 0 -0.02"
       rpy="0 0 0" />
     <parent
       link="link_5" />
@@ -425,17 +424,17 @@
     name="link_7">
     <inertial>
       <origin
-        xyz="0.024202 -0.0074541 0.02005"
+        xyz="0.02487 -0.008584 0.02"
         rpy="0 0 0" />
       <mass
-        value="0.011608" />
+        value="0.012327" />
       <inertia
-        ixx="2.0209E-06"
-        ixy="-4.1461E-07"
-        ixz="3.9129E-19"
-        iyy="8.1278E-06"
-        iyz="5.7177E-21"
-        izz="7.0746E-06" />
+        ixx="2.0823E-06"
+        ixy="-7.4626E-07"
+        ixz="-5.5609E-12"
+        iyy="8.611E-06"
+        iyz="-6.6849E-13"
+        izz="7.4736E-06" />
     </inertial>
     <visual>
       <origin
@@ -465,7 +464,7 @@
     name="joint_7"
     type="prismatic">
     <origin
-      xyz="0.075 0 -0.02"
+      xyz="0.072 0 -0.02"
       rpy="0 0 0" />
     <parent
       link="link_5" />
