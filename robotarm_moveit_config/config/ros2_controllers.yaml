@@ -3,26 +3,17 @@ controller_manager:
   ros__parameters:
     update_rate: 100  # Hz
 
-    gripper_group_controller:
+    arm_group_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
 
-    arm_group_controller:
+    gripper_group_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
-gripper_group_controller:
-  ros__parameters:
-    joints:
-      - joint_7
-    command_interfaces:
-      - position
-    state_interfaces:
-      - position
-      - velocity
 arm_group_controller:
   ros__parameters:
     joints:
@@ -32,6 +23,15 @@ arm_group_controller:
       - joint_4
       - joint_5
       - tcp_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+gripper_group_controller:
+  ros__parameters:
+    joints:
+      - joint_7
     command_interfaces:
       - position
     state_interfaces:
