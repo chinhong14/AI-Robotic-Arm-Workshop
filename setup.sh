@@ -28,7 +28,7 @@ print_success "Unnecessary packages removed"
 # Update system
 print_status "Updating system packages..."
 sudo apt update
-sudo apt install -y net-tools wget curl git-all
+sudo apt install -y net-tools wget curl git-all python3-serial
 print_success "System packages updated"
 
 # Setup locale for ROS2
