@@ -117,6 +117,10 @@ print_success "Environment configured"
 # Source the workspace for current session
 source ~/workspace/AI-Robotic-Arm-Workshop/install/setup.bash
 
+# Add current user 
+sudo usermod -aG dialout $USER
+newgrp dialout
+
 echo ""
 echo -e "${GREEN}========================================${NC}"
 echo -e "${GREEN}  Setup Complete!${NC}"
