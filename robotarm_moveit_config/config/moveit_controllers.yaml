@@ -9,8 +9,6 @@ moveit_simple_controller_manager:
 
   arm_group_controller:
     type: FollowJointTrajectory
-    action_ns: follow_joint_trajectory
-    default: true
     joints:
       - joint_1
       - joint_2
@@ -18,9 +16,11 @@ moveit_simple_controller_manager:
       - joint_4
       - joint_5
       - tcp_joint
-  gripper_group_controller:
-    type: FollowJointTrajectory
     action_ns: follow_joint_trajectory
     default: true
+  gripper_group_controller:
+    type: FollowJointTrajectory
     joints:
       - joint_7
+    action_ns: follow_joint_trajectory
+    default: true
