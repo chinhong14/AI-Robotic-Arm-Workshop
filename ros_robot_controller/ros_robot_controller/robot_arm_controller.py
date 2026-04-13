@@ -40,8 +40,10 @@ class RobotArmController(Node):
         
         pwm_msg = SetPWMServoState()
         pwm_msg.duration = 0.01
+
         bus_servos = []
         pwm_servos = []
+
         # full_range_pulse = 875-125
         full_range_pulse = 750
         # Process each joint
@@ -60,119 +62,65 @@ class RobotArmController(Node):
                 bus_servos.append(servo1)
 
             if joint_name == "joint_2":
-                # Convert radians to pulses
-                pulse_2 = int((joint_angle / 3.142) * (880-120) + 120)
-                pulse_3 = 880 - int((joint_angle / 3.142) * (880-120))  # Inverted
+                pwm_val2 = 825 + int((2220-825) * (joint_angle / 3.142))
 
-                # self.get_logger().info(f"Joint_2: {joint_angle:.3f} rad -> Servo2: {pulse_2} pulse, Servo3: {pulse_3} pulse")
+                # self.get_logger().info(f"Joint_2: {joint_angle:.3f} rad -> Servo3: {pwm_val2} pulse")
 
-                # Define servo commands for IDs 1 and 2
-                servo2 = BusServoState()
-                servo2.present_id = [1,2]
-                servo2.position = [1,pulse_2]
+                pwm_servo_2 = PWMServoState()
+                pwm_servo_2.id = [2]
+                pwm_servo_2.position = [pwm_val2]
+                pwm_servo_2.offset = [0]
+                pwm_servos.append(pwm_servo_2)
 
-                servo3 = BusServoState()
-                servo3.present_id = [1,3]
-                servo3.position = [1,pulse_3]
-
-                
-                bus_servos.append(servo2)
-                bus_servos.append(servo3)    
 
             if joint_name == "joint_3":
-                # Convert radians to pulses
-                # print(joint_angle)
-                pulse_4 = 880 + int((joint_angle / 3.142) * (880-120))
-                pulse_5 = 120 - int((joint_angle / 3.142) * (880-120))  # Inverted
-                # print (int((abs(joint_angle) / 3.142) * (full_range_pulse)))
+                pwm_val3 = 2220 - int((2220-825) * (joint_angle / 3.142))
 
-                # self.get_logger().info(f"Joint_3: {joint_angle:.3f} rad -> Servo4: {pulse_4} pulse, Servo5: {pulse_5} pulse")
+                # self.get_logger().info(f"Joint_3: {joint_angle:.3f} rad -> Servo4: {pwm_val3} pulse")
+
+                pwm_servo_3 = PWMServoState()
+                pwm_servo_3.id = [3]
+                pwm_servo_3.position = [pwm_val3]
+                pwm_servo_3.offset = []
+                pwm_servos.append(pwm_servo_3)
+
+            if joint_name == "joint_4":
+                # Convert radians to pulses
+                pulse_4 = 500 - int((joint_angle / 3.142) * (880-110))
+
+                # self.get_logger().info(f"Joint_4: {joint_angle:.3f} rad -> Servo6: {pulse_4} pulse")
 
                 # Define servo commands for IDs 1 and 2
                 servo4 = BusServoState()
                 servo4.present_id = [1,4]
                 servo4.position = [1,pulse_4]
 
+                bus_servos.append(servo4)       
+
+            if joint_name == "joint_5":
+                # Convert radians to pulses
+                pulse_5 = int((joint_angle / 3.142) * (880-110) + 500)
+
+                # self.get_logger().info(f"Joint_5: {joint_angle:.3f} rad -> Servo7: {pulse_5} pulse")
+
+                # Define servo commands for IDs 1 and 2
                 servo5 = BusServoState()
                 servo5.present_id = [1,5]
                 servo5.position = [1,pulse_5]
 
-                
-                bus_servos.append(servo4)
-                bus_servos.append(servo5)   
+                bus_servos.append(servo5)
 
-            if joint_name == "joint_4":
+            if joint_name == "joint_7":
                 # Convert radians to pulses
-                pulse_6 = int((joint_angle / 3.142) * (865-105) + 500)
-
-                # self.get_logger().info(f"Joint_4: {joint_angle:.3f} rad -> Servo6: {pulse_6} pulse")
+                pulse_6 = 850 + int((joint_angle/0.04) * (850-120))
+                # self.get_logger().info(f"right_gripper_joint: {joint_angle:.3f} rad -> Servo8: {pulse_6} pulse")
 
                 # Define servo commands for IDs 1 and 2
-                servo6 = BusServoState()
+                servo6= BusServoState()
                 servo6.present_id = [1,6]
                 servo6.position = [1,pulse_6]
 
-                bus_servos.append(servo6)       
-
-            if joint_name == "joint_5":
-                # Convert radians to pulses
-                pulse_7 = int((joint_angle / 3.142) * (865-120) + 500)
-
-                # self.get_logger().info(f"Joint_5: {joint_angle:.3f} rad -> Servo7: {pulse_7} pulse")
-
-                # Define servo commands for IDs 1 and 2
-                servo7 = BusServoState()
-                servo7.present_id = [1,7]
-                servo7.position = [1,pulse_7]
-
-                bus_servos.append(servo7)
-
-            if joint_name == "right_gripper_joint":
-                # Convert radians to pulses
-                # pulse_8 = 565 - int((joint_angle / 0.7) * (565-395))
-                pulse_8 = 533 - int((joint_angle / 0.7) * (533-400))
-                # self.get_logger().info(f"right_gripper_joint: {joint_angle:.3f} rad -> Servo8: {pulse_8} pulse")
-
-                # Define servo commands for IDs 1 and 2
-                servo8 = BusServoState()
-                servo8.present_id = [1,8]
-                servo8.position = [1,pulse_8]
-
-                bus_servos.append(servo8)
-
-            if joint_name == "right_cutter_joint":
-                # Convert radians to pulses
-                pulse_9 = int((joint_angle / 0.7) * (515-280) + 280)
-
-                # self.get_logger().info(f"right_cutter_joint: {joint_angle:.3f} rad -> Servo9: {pulse_9} pulse")
-
-                # Define servo commands for IDs 1 and 2
-                servo9 = BusServoState()
-                servo9.present_id = [1,9]
-                servo9.position = [1,pulse_9]
-
-                bus_servos.append(servo9)
-
-            # if joint_name == "right_cutter_joint":
-            #     # Convert radians to pulses
-            #     pulse_9 = int((joint_angle / 0.7) * (555-360) + 360)
-
-            #     self.get_logger().info(f"right_cutter_joint: {joint_angle:.3f} rad -> Servo9: {pulse_9} pulse")
-
-            #     # Define servo commands for IDs 1 and 2
-            #     servo9 = BusServoState()
-            #     servo9.present_id = [1,9]
-            #     servo9.position = [1,pulse_9]
-
-            #     bus_servos.append(pulse_9)         
-
-            # if servo_config['type'] == 'pwm':
-            #         # Create PWM servo command
-            #         servo = PWMServoState()
-            #         servo.id = [servo_config['id']]
-            #         servo.position = [pulse]
-            #         servo.offset = []
-            #         pwm_servos.append(servo)
+                bus_servos.append(servo6)
 
         # Publish if we have servos to move
         if bus_servos:
