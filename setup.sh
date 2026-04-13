@@ -28,7 +28,7 @@ print_success "Unnecessary packages removed"
 # Update system
 print_status "Updating system packages..."
 sudo apt update
-sudo apt install -y net-tools wget curl git-all
+sudo apt install -y net-tools wget curl git-all python3-serial
 print_success "System packages updated"
 
 # Setup locale for ROS2
@@ -116,6 +116,10 @@ print_success "Environment configured"
 
 # Source the workspace for current session
 source ~/workspace/AI-Robotic-Arm-Workshop/install/setup.bash
+
+# Add current user 
+sudo usermod -aG dialout $USER
+newgrp dialout
 
 echo ""
 echo -e "${GREEN}========================================${NC}"
