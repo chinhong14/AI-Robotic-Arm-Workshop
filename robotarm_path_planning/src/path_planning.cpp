@@ -25,46 +25,55 @@ public:
         RCLCPP_INFO(this->get_logger(), "Moving to 'rest' pose...");
         arm_group_->setNamedTarget("rest");
         executePlan(arm_group_);
-
+        rclcpp::sleep_for(std::chrono::seconds(1)); // Sleep for a moment to ensure the robot has settled   
+        
         // Move to the "initial_pose" pose
         RCLCPP_INFO(this->get_logger(), "Moving to 'initial_pose' pose...");
         arm_group_->setNamedTarget("initial_pose");
         executePlan(arm_group_);
+        rclcpp::sleep_for(std::chrono::seconds(1));
 
         // Open gripper
         RCLCPP_INFO(this->get_logger(), "Moving to 'gripper_open' pose...");
         gripper_group_->setNamedTarget("open");
         executePlan(gripper_group_);
+        rclcpp::sleep_for(std::chrono::seconds(1));
 
         // Move to the "pose_1" pose
         RCLCPP_INFO(this->get_logger(), "Moving to 'pose_1' pose...");
         arm_group_->setNamedTarget("pose_1");
         executePlan(arm_group_);
+        rclcpp::sleep_for(std::chrono::seconds(3));
 
         // hold gripper
         RCLCPP_INFO(this->get_logger(), "Moving to 'hold' pose...");
         gripper_group_->setNamedTarget("hold");
         executePlan(gripper_group_);
+        rclcpp::sleep_for(std::chrono::seconds(1));
 
         // Move to the "pose_2" pose
         RCLCPP_INFO(this->get_logger(), "Moving to 'pose_2' pose...");
         arm_group_->setNamedTarget("pose_2");
         executePlan(arm_group_);
+        rclcpp::sleep_for(std::chrono::seconds(1));
 
         // open gripper
         RCLCPP_INFO(this->get_logger(), "Moving to 'open' pose...");
         gripper_group_->setNamedTarget("open");
         executePlan(gripper_group_);
+        rclcpp::sleep_for(std::chrono::seconds(1));
 
         // close gripper
         RCLCPP_INFO(this->get_logger(), "Moving to 'close' pose...");
         gripper_group_->setNamedTarget("close");
         executePlan(gripper_group_);
+        rclcpp::sleep_for(std::chrono::seconds(1));
 
         // Move to the "rest" pose
         RCLCPP_INFO(this->get_logger(), "Moving to 'rest' pose...");
         arm_group_->setNamedTarget("rest");
         executePlan(arm_group_);
+        rclcpp::sleep_for(std::chrono::seconds(1));
 
         RCLCPP_INFO(this->get_logger(), "Motion sequence completed!");
     }

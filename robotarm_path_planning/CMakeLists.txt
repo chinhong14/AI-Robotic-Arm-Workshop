@@ -21,14 +21,6 @@ add_executable(path_planning src/path_planning.cpp)
 ament_target_dependencies(path_planning rclcpp moveit_ros_planning_interface)
 install(TARGETS path_planning DESTINATION lib/${PROJECT_NAME})
 
-add_executable(pose_path_planning src/pose_path_planning.cpp)
-ament_target_dependencies(pose_path_planning rclcpp moveit_ros_planning_interface moveit_ros_occupancy_map_monitor octomap_msgs moveit_msgs)
-install(TARGETS pose_path_planning DESTINATION lib/${PROJECT_NAME})
-
-# add_executable(collision src/collision.cpp)
-# ament_target_dependencies(collision rclcpp moveit_ros_planning_interface moveit_ros_occupancy_map_monitor octomap_msgs moveit_msgs)
-# install(TARGETS collision DESTINATION lib/${PROJECT_NAME})
-
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
