@@ -50,7 +50,7 @@ class RobotArmController(Node):
         for joint_name, joint_angle in zip(msg.name, msg.position):
             if joint_name == "joint_1":
                 # Convert radians to pulses
-                pulse_1 = int((joint_angle / 3.142) * (880-120) + 500)
+                pulse_1 = 500 - int((joint_angle / 3.142) * (880-120))
 
                 # self.get_logger().info(f"Joint_1: {joint_angle:.3f} rad -> Servo1: {pulse_1} pulse")
 
