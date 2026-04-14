@@ -10,7 +10,7 @@ default_acceleration_scaling_factor: 0.1
 joint_limits:
   joint_1:
     has_velocity_limits: true
-    max_velocity: 0.2
+    max_velocity: 0.85
     has_acceleration_limits: false
     max_acceleration: 0.0
   joint_2:
@@ -25,26 +25,26 @@ joint_limits:
     max_acceleration: 0.0
   joint_4:
     has_velocity_limits: true
-    max_velocity: 0.2
+    max_velocity: 0.85
     has_acceleration_limits: false
     max_acceleration: 0.0
   joint_5:
     has_velocity_limits: true
-    max_velocity: 0.2
+    max_velocity: 0.85
     has_acceleration_limits: false
     max_acceleration: 0.0
   joint_6:
     has_velocity_limits: true
-    max_velocity: 0.2
+    max_velocity: 0.35
     has_acceleration_limits: false
     max_acceleration: 0.0
   joint_7:
     has_velocity_limits: true
-    max_velocity: 0.2
+    max_velocity: 0.35
     has_acceleration_limits: false
     max_acceleration: 0.0
   tcp_joint:
     has_velocity_limits: true
-    max_velocity: 0.2
+    max_velocity: 0.85
     has_acceleration_limits: false
     max_acceleration: 0.0
