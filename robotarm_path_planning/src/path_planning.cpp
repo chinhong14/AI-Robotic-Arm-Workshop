@@ -12,9 +12,9 @@ public:
         gripper_group_ = std::make_shared<moveit::planning_interface::MoveGroupInterface>(node_ptr, "gripper_group");
 
         // Set velocity and acceleration scaling
-        arm_group_->setMaxVelocityScalingFactor(0.5);
-        arm_group_->setMaxAccelerationScalingFactor(0.1);
-        gripper_group_->setMaxVelocityScalingFactor(0.5);
+        arm_group_->setMaxVelocityScalingFactor(1.0);
+        arm_group_->setMaxAccelerationScalingFactor(0.3);
+        gripper_group_->setMaxVelocityScalingFactor(0.1);
         gripper_group_->setMaxAccelerationScalingFactor(0.1);
 
     }
@@ -54,6 +54,21 @@ public:
         // Move to the "pose_2" pose
         RCLCPP_INFO(this->get_logger(), "Moving to 'pose_2' pose...");
         arm_group_->setNamedTarget("pose_2");
+        executePlan(arm_group_);
+
+        // Move to the "pose_3" pose
+        RCLCPP_INFO(this->get_logger(), "Moving to 'pose_3' pose...");
+        arm_group_->setNamedTarget("pose_3");
+        executePlan(arm_group_);
+
+        // Move to the "pose_4" pose
+        RCLCPP_INFO(this->get_logger(), "Moving to 'pose_4' pose...");
+        arm_group_->setNamedTarget("pose_4");
+        executePlan(arm_group_);
+
+        // Move to the "pose_5" pose
+        RCLCPP_INFO(this->get_logger(), "Moving to 'pose_5' pose...");
+        arm_group_->setNamedTarget("pose_5");
         executePlan(arm_group_);
         rclcpp::sleep_for(std::chrono::seconds(1));
 

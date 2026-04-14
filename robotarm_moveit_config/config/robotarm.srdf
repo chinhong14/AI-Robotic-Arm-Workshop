@@ -46,11 +46,11 @@
         <joint name="joint_5" value="0"/>
         <joint name="tcp_joint" value="0"/>
     </group_state>
-    <group_state name="pose_2" group="arm_group">
-        <joint name="joint_1" value="1.571"/>
-        <joint name="joint_2" value="1.8"/>
-        <joint name="joint_3" value="0.7"/>
-        <joint name="joint_4" value="-1.1"/>
+    <group_state name="pose_5" group="arm_group">
+        <joint name="joint_1" value="1.25"/>
+        <joint name="joint_2" value="1.6"/>
+        <joint name="joint_3" value="0.6"/>
+        <joint name="joint_4" value="-1"/>
         <joint name="joint_5" value="0"/>
         <joint name="tcp_joint" value="0"/>
     </group_state>
@@ -62,6 +62,30 @@
     </group_state>
     <group_state name="hold" group="gripper_group">
         <joint name="joint_7" value="-0.015"/>
+    </group_state>
+    <group_state name="pose_2" group="arm_group">
+        <joint name="joint_1" value="0"/>
+        <joint name="joint_2" value="0.45"/>
+        <joint name="joint_3" value="0.85"/>
+        <joint name="joint_4" value="0.35"/>
+        <joint name="joint_5" value="0"/>
+        <joint name="tcp_joint" value="0"/>
+    </group_state>
+    <group_state name="pose_3" group="arm_group">
+        <joint name="joint_1" value="0"/>
+        <joint name="joint_2" value="0.45"/>
+        <joint name="joint_3" value="0.85"/>
+        <joint name="joint_4" value="0.35"/>
+        <joint name="joint_5" value="-0.7"/>
+        <joint name="tcp_joint" value="0"/>
+    </group_state>
+    <group_state name="pose_4" group="arm_group">
+        <joint name="joint_1" value="0"/>
+        <joint name="joint_2" value="0.45"/>
+        <joint name="joint_3" value="0.85"/>
+        <joint name="joint_4" value="0.35"/>
+        <joint name="joint_5" value="0.7"/>
+        <joint name="tcp_joint" value="0"/>
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="robot_ee" parent_link="link_5" group="gripper_group"/>
